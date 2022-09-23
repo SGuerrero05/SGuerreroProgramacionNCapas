@@ -68,6 +68,15 @@
     <Compile Include="Direccion.cs">
       <DependentUpon>SGuerreroProgramacionNCapas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Empresa.cs">
+      <DependentUpon>SGuerreroProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaGetAll_Result.cs">
+      <DependentUpon>SGuerreroProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaGetById_Result.cs">
+      <DependentUpon>SGuerreroProgramacionNCapas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Estado.cs">
       <DependentUpon>SGuerreroProgramacionNCapas.tt</DependentUpon>
     </Compile>

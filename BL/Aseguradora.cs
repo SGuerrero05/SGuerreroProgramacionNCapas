@@ -15,7 +15,7 @@ namespace BL
             {
                     using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
-                    var query = context.AseguradoraAdd(aseguradora.Nombre, aseguradora.Usuario.IdUsuario);
+                    var query = context.AseguradoraAdd(aseguradora.Nombre, aseguradora.Usuario.IdUsuario,aseguradora.Imagen);
                     if (query >= 1)
                     {
                         result.Correct = true;
@@ -72,7 +72,7 @@ namespace BL
             {
                 using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
-                    var query = context.AseguradoraUpdate(aseguradora.IdAseguradora, aseguradora.Nombre, aseguradora.Usuario.IdUsuario);
+                    var query = context.AseguradoraUpdate(aseguradora.IdAseguradora, aseguradora.Nombre, aseguradora.Usuario.IdUsuario,aseguradora.Imagen);
                     if (query >=1)
                     {
                         result.Correct = true;
@@ -114,6 +114,7 @@ namespace BL
                             aseguradora.FechaModificacion = obj.FechaModificacion.ToString();
                             aseguradora.Usuario = new ML.Usuario();
                             aseguradora.Usuario.IdUsuario = obj.IdUsuario.Value;
+                          
 
                             result.Objects.Add(aseguradora);  
                         }

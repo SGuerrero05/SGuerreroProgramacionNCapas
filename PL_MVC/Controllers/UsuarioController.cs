@@ -12,7 +12,26 @@ namespace PL_MVC.Controllers
         public ActionResult GetAll()
         {
             ML.Usuario usuario = new ML.Usuario();
-            ML.Result result = BL.Usuario.GetAllEF();
+            UsuarioReference.UsuarioClient obj = new UsuarioReference.UsuarioClient();
+
+            var result = obj.GetAllEF();
+            if (result.Correct)
+            {
+                usuario.Usuarios = result.Objects.ToList();
+            }
+            else
+            {
+                result.Correct = false;
+                ViewBag.Mensaje = "Fallo la consulta";
+            }
+            return View(usuario);
+        }
+
+        [HttpPost]
+        public ActionResult GetAll(ML.Usuario usuario)
+        {
+            ML.Result result = BL.Usuario.GetAllEF(usuario);
+
             if (result.Correct)
             {
                 usuario.Usuarios = result.Objects;
@@ -55,8 +74,8 @@ namespace PL_MVC.Controllers
                 else
 
                 {
-                    ML.Result result = BL.Usuario.GetByIdEF(IdUsuario.Value);
-
+                    UsuarioReference.UsuarioClient obj = new UsuarioReference.UsuarioClient();
+                    var result = obj.GetByIdEF(IdUsuario.Value);
                     if (result.Correct)
                     {
 
@@ -96,7 +115,8 @@ namespace PL_MVC.Controllers
 
             if (usuario.IdUsuario == 0) 
             {
-                ML.Result result = BL.Usuario.AddEF(usuario);
+                UsuarioReference.UsuarioClient obj = new UsuarioReference.UsuarioClient();
+                var result = obj.AddEF(usuario);
 
                 if (result.Correct)
                 {
@@ -109,7 +129,9 @@ namespace PL_MVC.Controllers
             }
             else
             {
-                ML.Result result = BL.Usuario.UpdateEF(usuario);
+                UsuarioReference.UsuarioClient obj = new UsuarioReference.UsuarioClient();
+                var result = obj.UpdateEF(usuario);
+
                 if (result.Correct)
                 {
                     ViewBag.Mensaje = "Modiciacion exitosa";
@@ -127,8 +149,13 @@ namespace PL_MVC.Controllers
         public ActionResult Delete(int IdUsuario)
         {
             ML.Usuario usuario = new ML.Usuario();
+
             usuario.IdUsuario = IdUsuario;
-            ML.Result result = BL.Usuario.DeleteEF(usuario);
+
+            UsuarioReference.UsuarioClient obj = new UsuarioReference.UsuarioClient();
+
+            var result = obj.DeleteEF(usuario.IdUsuario);
+
             if (result.Correct)
             {
                 ViewBag.Mensaje = "El registro se elimino correctamente";

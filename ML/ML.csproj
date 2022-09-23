@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aseguradora.cs" />
+    <Compile Include="Empresa.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Municipio.cs" />
     <Compile Include="Colonia.cs" />

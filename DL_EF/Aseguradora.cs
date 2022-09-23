@@ -19,6 +19,7 @@ namespace DL_EF
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public Nullable<int> IdUsuario { get; set; }
+        public string Imagen { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

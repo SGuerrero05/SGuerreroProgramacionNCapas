@@ -459,8 +459,8 @@ namespace BL
             {
                 using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
-                    var query = context.UsuarioAdd(usuario.Nombre, usuario.ApellidoPaterno, usuario.ApellidoMaterno, usuario.Email, usuario.Rol.IdRol, usuario.UserName, usuario.Password, usuario.Sexo, usuario.Telefono, usuario.Celular, usuario.FechaNacimiento, usuario.CURP, usuario.Imagen,usuario.Direccion.IdDireccion,usuario.Direccion.Calle,usuario.Direccion.NumeroInterior,usuario.Direccion.NumeroExterior,usuario.Direccion.Colonia.IdColonia);
-                    if (query >= 1)
+                    var query = context.UsuarioAdd(usuario.Nombre, usuario.ApellidoPaterno,usuario.ApellidoMaterno,usuario.Email,usuario.Rol.IdRol,usuario.UserName,usuario.Password,usuario.Sexo,usuario.Telefono,usuario.Celular,usuario.FechaNacimiento,usuario.CURP,usuario.Imagen,usuario.Direccion.IdDireccion,usuario.Direccion.Calle,usuario.Direccion.NumeroInterior,usuario.Direccion.NumeroExterior, usuario.Direccion.Colonia.IdColonia,true);
+                    if (query > 0)
                     {
                         result.Correct = true;
                     }
@@ -487,7 +487,7 @@ namespace BL
                 using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
                     var query = context.UsuarioDelete(usuario.IdUsuario);
-                    if (query >= 1)
+                    if (query > 1)
                     {
                         result.Correct = true;
                     }
@@ -513,8 +513,8 @@ namespace BL
             {
                 using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
-                    var query = context.UsuarioUpdate(usuario.IdUsuario, usuario.Nombre, usuario.ApellidoPaterno, usuario.ApellidoMaterno, usuario.Email, usuario.Rol.IdRol, usuario.UserName, usuario.Password, usuario.Sexo, usuario.Telefono, usuario.Celular, usuario.FechaNacimiento, usuario.CURP, usuario.Imagen,usuario.Direccion.Calle, usuario.Direccion.NumeroInterior, usuario.Direccion.NumeroExterior, usuario.Direccion.Colonia.IdColonia);
-                    if (query >= 1)
+                    var query = context.UsuarioUpdate(usuario.IdUsuario, usuario.Nombre, usuario.ApellidoPaterno, usuario.ApellidoMaterno, usuario.CURP, usuario.Rol.IdRol, usuario.UserName, usuario.Password, usuario.Sexo, usuario.Telefono, usuario.Celular, usuario.FechaNacimiento, usuario.CURP, usuario.Imagen, usuario.Direccion.Calle, usuario.Direccion.NumeroInterior, usuario.Direccion.NumeroExterior, usuario.Direccion.Colonia.IdColonia, usuario.Status);
+                    if (query > 0)
                     {
                         result.Correct = true;
                     }
@@ -533,14 +533,18 @@ namespace BL
             return result;
 
         }
-        public static ML.Result GetAllEF()
+        public static ML.Result GetAllEF(ML.Usuario usuarioBusquedaAbierta)
         {
             ML.Result result = new ML.Result();
             try
             {
                 using (DL_EF.SGuerreroProgramacionNcapasEntities context = new DL_EF.SGuerreroProgramacionNcapasEntities())
                 {
-                    var query = context.UsuarioGetAll().ToList();
+                    usuarioBusquedaAbierta.Nombre = (usuarioBusquedaAbierta.Nombre == null) ? "" : usuarioBusquedaAbierta.Nombre;
+                    usuarioBusquedaAbierta.ApellidoPaterno = (usuarioBusquedaAbierta.ApellidoPaterno == null) ? "" : usuarioBusquedaAbierta.ApellidoPaterno;
+                    usuarioBusquedaAbierta.ApellidoMaterno = (usuarioBusquedaAbierta.ApellidoMaterno == null) ? "" : usuarioBusquedaAbierta.ApellidoMaterno;
+
+                    var query = context.UsuarioGetAll(usuarioBusquedaAbierta.Nombre, usuarioBusquedaAbierta.ApellidoPaterno, usuarioBusquedaAbierta.ApellidoMaterno).ToList();
                     result.Objects = new List<object>();
 
                     if (query != null)
@@ -549,7 +553,7 @@ namespace BL
                         {
                             ML.Usuario usuario = new ML.Usuario();
                             usuario.IdUsuario = obj.IdUsuario;
-                            usuario.Nombre = obj.NombreUsuario;
+                            usuario.Nombre = obj.Nombre;
                             usuario.ApellidoPaterno = obj.ApellidoPaterno;
                             usuario.ApellidoMaterno = obj.ApellidoMaterno;
                             usuario.Email = obj.Email;
@@ -587,6 +591,8 @@ namespace BL
                             usuario.Direccion.Colonia.Municipio.Estado.Pais.IdPais = obj.IdPais.Value;
                             usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre = obj.NombrePais;
 
+                            usuario.Status = obj.Status;
+
 
                             result.Objects.Add(usuario);
 
@@ -621,7 +627,7 @@ namespace BL
                     {
                         ML.Usuario usuario = new ML.Usuario();
                         usuario.IdUsuario = obj.IdUsuario;
-                        usuario.Nombre = obj.NombreUsuario;
+                        usuario.Nombre = obj.Nombre;
                         usuario.ApellidoPaterno = obj.ApellidoPaterno;
                         usuario.ApellidoMaterno = obj.ApellidoMaterno;
                         usuario.Email = obj.Email;
@@ -659,6 +665,9 @@ namespace BL
                         usuario.Direccion.Colonia.Municipio.Estado.Pais.IdPais = obj.IdPais.Value;
                         usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre = obj.NombrePais;
 
+                        usuario.Status = obj.Status;
+
+
                         result.Object=usuario;
 
                         result.Correct = true;
@@ -679,6 +688,7 @@ namespace BL
             }
             return result;
         }
+
         //public static ML.Result AddLINQ (ML.Usuario usuario)
         //{
         //    ML.Result result = new ML.Result();

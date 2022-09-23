@@ -21,8 +21,9 @@ namespace ML
         public string Celular { get; set; }
         public string FechaNacimiento { get; set; }
         public string CURP { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
         public ML.Direccion Direccion { get; set; }
+        public bool Status { get; set; }
         public List<object> Usuarios { get; set; }
 
 

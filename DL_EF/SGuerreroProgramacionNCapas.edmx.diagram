@@ -6,10 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9f8a519a669b429288c44a5ff7dfef42" Name="Diagram1">
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Rol" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Usuario__IdRol__164452B1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Aseguradora" Width="1.5" PointX="5.25" PointY="2" />
-        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Asegurado__IdUsu__239E4DCF" />
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Colonia" Width="1.5" PointX="12.125" PointY="6.125" />
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Direccion" Width="1.5" PointX="14.375" PointY="3.375" />
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Estado" Width="1.5" PointX="7.625" PointY="6.25" />
@@ -17,10 +14,14 @@
         <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Pais" Width="1.5" PointX="5.375" PointY="6.375" />
         <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Colonia__IdMunic__5441852A" />
         <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Direccion__IdCol__5535A963" />
-        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Direccion__IdUsu__5629CD9C" />
         <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Estado__IdPais__52593CB8" />
         <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Municipio__IdEst__534D60F1" />
-      </Diagram>
+        <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Empresa" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SGuerreroProgramacionNcapasModel.Usuario" Width="1.5" PointX="3" PointY="8.125" />
+        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Asegurado__IdUsu__239E4DCF" />
+        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Direccion__IdUsu__5629CD9C" />
+        <AssociationConnector Association="SGuerreroProgramacionNcapasModel.FK__Usuario__IdRol__164452B1" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -34,12 +34,13 @@ namespace DL_EF
         public string Celular { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public string CURP { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
+        public bool Status { get; set; }
     
-        public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aseguradora> Aseguradora { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Direccion> Direccion { get; set; }
+        public virtual Rol Rol { get; set; }
     }
 }

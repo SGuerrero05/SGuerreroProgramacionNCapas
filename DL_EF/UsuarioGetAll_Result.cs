@@ -14,7 +14,7 @@ namespace DL_EF
     public partial class UsuarioGetAll_Result
     {
         public int IdUsuario { get; set; }
-        public string NombreUsuario { get; set; }
+        public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Email { get; set; }
@@ -27,7 +27,7 @@ namespace DL_EF
         public string Celular { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public string CURP { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
         public int IdDireccion { get; set; }
         public string Calle { get; set; }
         public string NumeroInterior { get; set; }
@@ -41,5 +41,6 @@ namespace DL_EF
         public string NombreEstado { get; set; }
         public Nullable<int> IdPais { get; set; }
         public string NombrePais { get; set; }
+        public bool Status { get; set; }
     }
 }
